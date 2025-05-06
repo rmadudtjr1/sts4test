@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <header id="header" th:fragment="header">
+        <h1>
+			<img th:src="@{/image/kglogo.png}" width="100px">
+			KG EDUONE 사이트
+		</h1>
+        <div th:if="${loginId == null}">
+            <a th:href="@{/member/loginForm}">로그인</a>
+        </div>
+        <div th:unless="${loginId == null}">
+            <a th:href="@{/member/detailMember(id=${loginId})}" th:text="${loginId}"></a>
+			<a th:href="@{/member/logout}">로그아웃</a>
+        </div>
+    </header>
+</body>
+</html>

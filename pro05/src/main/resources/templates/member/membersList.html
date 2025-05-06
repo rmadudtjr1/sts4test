@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>회원 목록</title>	
+	<link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+	<div th:insert="~{fragments/header :: header}"></div>
+	<div th:insert="~{fragments/sidebar :: sidebar}"></div>
+	<div id="content">
+	<h1 align="center">회원 목록</h1>
+	<hr>
+	<table align="center" border="1" width="700">
+		<tr>
+			<th bgcolor="orange">아이디</th>
+			<th bgcolor="orange">암호</th>
+			<th bgcolor="orange">이름</th>
+			<th bgcolor="orange">이메일</th>
+			<th bgcolor="orange">가입일자</th>
+			<th bgcolor="orange">삭제</th>
+		</tr>
+		<tr th:if=${#lists.isEmpty(membersList)}>
+			<td colspan="6"><h3>가입된 회원이 없습니다.</h3></td>
+		</tr>
+		<tr th:each="member:${membersList}">
+			<td align="center">
+				<a th:href="@{/member/detailMember(id=${member.id})}" th:text="${member.id}" ></a>
+			</td>
+			<td th:text="${member.pwd}" align="center"></td>
+			<td th:text="${member.name}" align="center"></td>
+			<td th:text="${member.email}" align="center"></td>
+			<td th:text="${#dates.format(member.joinDate, 'yyyy-MM-dd')}" align="center"></td>
+			<td>
+				<a th:href="@{/member/deleteMember(id=${member.id})}">삭제</a>
+			</td>
+		</tr>
+	</table>
+	<div align="center">
+		<a th:href="@{/member/joinMemberForm}">회원 가입</a>
+	</div>
+	</div>
+	<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>
