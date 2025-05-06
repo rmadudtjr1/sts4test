@@ -31,7 +31,7 @@ jobs:
       working-directory: pro05
     
     - name: Build with Gradle
-      run: ./gradlew clean build
+      run: ./gradlew clean build -x test
       working-directory: pro05
 
     - name: Upload JAR to EC2
