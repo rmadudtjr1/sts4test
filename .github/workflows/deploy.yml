@@ -32,7 +32,7 @@ jobs:
 
     - name: Rename JAR file
       run: |
-        JAR_FILE=$(ls pro05/build/libs/*.jar)
+        JAR_FILE=$(ls pro05/build/libs/*.jar | head -n 1)  # 첫 번째 JAR 파일만 선택
         mv "$JAR_FILE" pro05/build/libs/myapp.jar
 
     - name: Upload JAR to EC2
