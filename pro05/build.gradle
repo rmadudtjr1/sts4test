@@ -5,7 +5,10 @@ plugins {
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+
+bootJar {
+    mainClassName = 'com.example.demo.Pro05Application'
+}
 
 java {
 	toolchain {
