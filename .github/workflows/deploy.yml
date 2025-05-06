@@ -20,10 +20,10 @@ jobs:
         distribution: 'temurin'
 
     - name: Make gradlew executable
-      run: chmod +x ./gradlew
+      run: chmod +x ./pro05/gradlew
 
     - name: Build with Gradle
-      run: ./gradlew clean build
+      run: ./pro05/gradlew clean build
 
     - name: Upload JAR to EC2
       uses: appleboy/scp-action@v0.1.7
