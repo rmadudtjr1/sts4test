@@ -26,8 +26,13 @@ jobs:
         cd pro05
         chmod +x ./gradlew
 
+    - name: Make gradlew executable
+      run: chmod +x gradlew
+      working-directory: pro05
+    
     - name: Build with Gradle
       run: ./gradlew clean build
+      working-directory: pro05
 
     - name: Upload JAR to EC2
       uses: appleboy/scp-action@v0.1.7
