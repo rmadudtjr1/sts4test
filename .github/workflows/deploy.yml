@@ -30,13 +30,18 @@ jobs:
       run: ./gradlew clean build -x test
       working-directory: pro05
 
+    - name: Rename JAR file
+      run: |
+        JAR_FILE=$(ls pro05/build/libs/*.jar | head -n 1)
+        mv "$JAR_FILE" pro05/build/libs/myapp.jar
+        
     - name: Upload JAR to EC2
       uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
-        source: "pro05/build/libs/*.jar"
+        source: "pro05/build/libs/myapp.jar"
         target: "/home/ubuntu/app"
         
     - name: Run deploy script on EC2
