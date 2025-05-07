@@ -23,7 +23,7 @@ public class MemberDTO {
 	private String pwd;
 	private String name;
 	private String email;
-	@Column(insertable = false, updatable = false, columnDefinition = "DATE DEFAULT SYSDATE")
+	@Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date joinDate;
 
 }
