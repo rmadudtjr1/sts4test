@@ -8,7 +8,7 @@ public class Home {
 	
 	@GetMapping(value= {"/", "/home"})
 	public String home() {
-		return "/home";
+		return "home";
 	}
 	
 }
